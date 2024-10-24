@@ -1,24 +1,27 @@
-print("Сделал Ягафаров Марк из ПИ-332Б")
 def get_number():
     while True:
         try:
-            num = int(input("Введите целое десятичное число: "))
+            num = int(input("Введите целое число: "))  
             return num
         except ValueError:
-            print("Ошибка: введите корректное целое число!")
+            print("Ошибка: введите корректное целое число!")  
 
-def choose_conversion():
-    while True:
-        choice = input("Выберите систему счисления для перевода (2 - двоичная, 8 - восьмеричная): ")
-        if choice in ('2', '8'):
-            return choice
-        else:
-            print("Ошибка: введите 2 или 8!")
+def convert_to_binary(number):
+    if number < 0:
+        return '-' + bin(abs(number))[2:]
+    else:
+        return bin(number)[2:]
+
+def convert_to_octal(number):
+    if number < 0:
+        return '-' + oct(abs(number))[2:]
+    else:
+        return oct(number)[2:]
 
 number = get_number()
-choice = choose_conversion()
 
-if choice == '2':
-    print(f"Число {number} в двоичной системе: {bin(number)[2:]}")
-elif choice == '8':
-    print(f"Число {number} в восьмеричной системе: {oct(number)[2:]}")
+binary_representation = convert_to_binary(number)
+octal_representation = convert_to_octal(number)
+
+print(f"Число {number} в двоичной системе: {binary_representation}")
+print(f"Число {number} в восьмеричной системе: {octal_representation}")
